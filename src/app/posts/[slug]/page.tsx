@@ -8,6 +8,9 @@ export default function Page() {
 
     type Post = {
         title: string;
+        description: string;
+        slug: string;
+        content: string;
     };
 
     const [post, setPost] = useState<Post>();
@@ -19,8 +22,18 @@ export default function Page() {
     }, []);
   
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1>{post?.title}</h1>
-        </main>
+        <>
+            <main id="conteudo">
+                <article className="post">
+                    <header>
+                        <h1>{post?.title}</h1>
+                        <h2>{post?.description}</h2>
+                    </header>
+                    <section>
+                        <p>{post?.content}</p>
+                    </section>
+                </article>
+            </main>
+         </>
     );
 }

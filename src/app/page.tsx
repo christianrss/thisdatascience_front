@@ -1,12 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import React, {useState, useEffect} from 'react';
+import Link from "next/link"
+import React, {useState, useEffect} from "react";
 
 export default function Home() {
 
   type Post = {
     title: string;
+    description: string;
+    slug: string;
   };
 
   const [posts, setPosts] = useState([]);
@@ -18,17 +20,24 @@ export default function Home() {
   }, []);
   
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Teste</h1>
-      {
-        posts.map((post: Post) => {
-          return (
-            <div>
-              {post.title}
-            </div>
-          )
-        })
-      }
-    </main>
+    <>
+      <main id="conteudo">
+        <article id="sobre-mim">
+          <header>
+              <h1>Posts</h1>
+          </header>
+          {
+            posts.map((post: Post) => {
+              return (
+                <section className="post-card">
+                  <h1><Link href={{pathname: `/posts/${post.slug}`}}>{post.title}</Link></h1>
+                  <p>{post.description}</p>
+                </section>
+              )
+            })
+          }
+        </article>
+      </main>
+    </>
   );
 }
