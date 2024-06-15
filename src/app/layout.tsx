@@ -1,17 +1,37 @@
 import Link from "next/link"
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+type Props = {
+  params: { title: string }
+}
+
 const inter = Inter({ subsets: ["latin"] });
 
+export async function generateMetadata(
+  { params }:Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return {
+    title: {
+      template: `%s | ThisDataScience`,
+      default: "ThisDataScience"
+    },
+    description: "",
+  }
+}
+/*
 export const metadata: Metadata = {
-  title: "ThisDataScience",
+  title: {
+    template: "%s | ThisDataScience",
+    default: "ThisDataScience"
+  },
   description: "",
-};
+};*/
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -37,6 +57,9 @@ export default function RootLayout({
           </nav>
         </header>
         {children}
+        <footer>
+          &copy; ThisDataScience. All rights reserved.
+        </footer>
 
       </body>
     </html>

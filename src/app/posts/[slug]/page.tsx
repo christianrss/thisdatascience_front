@@ -1,6 +1,5 @@
 "use client";
 import { useParams } from 'next/navigation'
-
 import React, {useState, useEffect} from 'react';
 
 export default function Page() {
@@ -15,10 +14,10 @@ export default function Page() {
 
     const [post, setPost] = useState<Post>();
     useEffect(() => {
-    fetch('/api/v1/posts/' + params.slug)
-        .then(response => response.json())
-        .then(json => setPost(json))
-        .catch(error => console.error(error));
+        fetch('/api/v1/posts/' + params.slug)
+            .then(response => response.json())
+            .then(json => setPost(json))
+            .catch(error => console.error(error));
     }, []);
   
     return (

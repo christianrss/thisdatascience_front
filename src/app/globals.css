@@ -246,6 +246,16 @@ hr {
   margin-top: 20px;
 }
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #999999;
+  color: #000000;
+  text-align: center;
+}
+
 /* Tratamento de responsividade */
 @media only screen and (min-width: 500px) {
   .video-yt {
