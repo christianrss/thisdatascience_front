@@ -29,7 +29,7 @@ export default function Home() {
           {
             posts.map((post: Post) => {
               return (
-                <section className="post-card">
+                <section className="post-card" key={post.slug}>
                   <h1><Link href={{pathname: `/posts/${post.slug}`}}>{post.title}</Link></h1>
                   <p>{post.description}</p>
                 </section>
